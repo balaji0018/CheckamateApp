@@ -1,0 +1,292 @@
+.progress-tracker {
+    margin: 20px 0;
+    text-align: center;
+}  
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color:  #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+}
+
+h1 {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  text-align: center;
+  color:  #1a1a1a; /* A softer dark gray */
+  letter-spacing: 1.5px; /* Adds spacing between letters */
+  text-transform: uppercase; /* Makes it all caps */
+  border-bottom: 3px solid #3b82f6; /* Blue accent underline */
+  padding-bottom: 0.5rem; /* Space between text and underline */
+  
+  /* --- Fixes spacing: NO negative margin --- */
+  margin-bottom: 0.5rem; /* Positive space *after* the underline */
+}
+
+.app-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4b5563; /* Muted gray - use a lighter gray if in dark mode */
+    margin-top: -10px; /* Pulls it closer to the H1 if needed */
+    margin-bottom: 30px; /* Adds space before the form starts */
+    text-align: center;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  /* A nice, soft blue-gray background */
+  background-color: #F5F7FA; 
+  
+  /* Centering the card */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to the top */
+  min-height: 100vh;
+  
+  /* Pushes the card down from the top edge */
+  padding: 5rem 1rem; 
+}
+.completed{
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 550px; 
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  
+  
+  /* Very modern, soft rounded corners (24px) */
+  border-radius: 1.5rem; 
+  
+  /* A soft, deep shadow to lift it off the page */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  
+  /* Generous padding inside the card */
+  padding: 2.5rem; 
+  
+  /* --- This is the "Unique" part ---
+    A colorful gradient border just at the top 
+  */
+  border-top: 5px solid;
+  border-image-source: linear-gradient(to right, #4F46E5, #9333EA);
+  border-image-slice: 1;
+
+  /* This uses flexbox to automatically space 
+     all children (title, form, list, etc.) */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Adds 24px of space between all elements */
+}
+
+.clear-all-btn {
+  background-color: #f87171; /* A "danger" red color */
+  color: white;
+  border: none;
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem; /* Extra space from the progress bar */
+}
+
+.clear-all-btn:hover {
+  background-color: #ef4444; /* Darker red */
+  /* A nice "glow" on hover */
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column; /* Stacks the two rows vertically */
+  gap: 0.75rem; /* 12px space between the rows */
+  width: 100%;
+}
+
+/* --- Form Row (for alignment) --- */
+.form-row {
+  display: flex;
+  gap: 0.75rem; /* 12px space between items in a row */
+  width: 100%;
+}
+
+/* --- Task Input Field --- */
+.task-input {
+  /* This makes the input field take up all available space */
+  flex-grow: 1; 
+  
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif; /* Assumes you've imported 'Inter' */
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 9999px; /* 8px */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* --- Style for when the input is focused (clicked) --- */
+.task-input:focus {
+  outline: none;
+  border-radius: 9999px;
+  border-color: #4F46E5; /* Blue border */
+  /* Blue glow */
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); 
+  
+}
+
+.add-task-btn {
+  background-color: #4F46E5; /* Indigo color */
+  color: white;
+  border: none;
+  border-radius: 9999px; /* 8px */
+  padding: 0.75rem 1.25rem; /* More padding horizontally */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* Prevents "Add Task" from wrapping */
+}
+
+.add-task-btn:hover {
+  background-color: #4338ca; /* Darker indigo */
+}
+
+.task-select {
+  /* This makes both dropdowns share space equally */
+  /* Using flex-grow: 1 ensures it expands to fill available space */
+  flex-grow: 1; 
+  flex-basis: 0; /* Important when using flex-grow to distribute space */
+  
+  padding: 0.75rem 2.5rem 0.75rem 1rem; /* Top Right Bottom Left (Increased right for arrow) */
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 9999px; /* 8px */
+  background-color: #ffffff; /* White background */
+  
+  /* Adds the dropdown arrow */
+  appearance: none; /* Removes default browser dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%236b7281%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M10%2012.586l-4.293-4.293a1%201%200%201%200-1.414%201.414l5%205a1%201%200%200%200%201.414%200l5-5a1%201%200%201%200-1.414-1.414L10%2012.586z%22%20clip-rule%3D%22evenodd%22%20%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25em 1.25em; /* Size of the custom arrow */
+}
+
+.task-select:focus {
+  outline: none;
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 0.75rem; /* 12px space between items in a row */
+  width: 100%;
+}
+
+
+
+
+/* TaskList Css Style */
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+li {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 9999px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+li:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Task Text Area */
+li > div:first-child {
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+li span {
+    font-size: 1.1rem;
+    color: #333;
+    display: block;
+}
+
+li small {
+    color: #777;
+    font-size: 0.9rem;
+    margin-left: 8px;
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Action Buttons Area */
+li > div:last-child {
+    display: flex;
+    gap: 8px;
+}
+
+
+.task-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+
+
+.task-complete {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+.task-complete:hover {
+    background-color: #bbdefb;
+}
+
+/* Style for the "Undo" button state */
+.task-undo {
+    background-color: #fffde7; /* A light yellow */
+    color: #f57f17;
+}
+.task-undo:hover {
+    background-color: #fff9c4;
+}
+
+/* Style for the "Delete" button */
+.task-delete {
+    background-color: #ffebee;
+    color: #c62828;
+}
+.task-delete:hover {
+    background-color: #ffcdd2;
+}
